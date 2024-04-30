@@ -1,0 +1,39 @@
+<!-- Button to fetch data -->
+<h1> hello there</h1>
+<button (click)="fetchData()">Show Data</button> 
+
+<!-- Form to add a new student -->
+<form>[formGroup]="studentForm" (ngSubmit)="addStudent()">
+  <input formControlName="id" placeholder="Id">
+  <input formControlName="name" placeholder="Name">
+  <input formControlName="age" placeholder="Age">
+  <input formControlName="major" placeholder="Major">
+  <input formControlName="role" placeholder="Role">
+  <button type="submit">Add Student</button></form> 
+
+
+<!-- Table to display students -->
+<table *ngIf="data && data.length > 0">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Major</th>
+        <th>Role</th>
+        <th>Actions</th> <!-- Add a header for actions -->
+    </tr>
+    <tr *ngFor="let student of data">
+        <td>{{ student.id }}</td>
+        <td>{{ student.name }}</td>
+        <td>{{ student.age }}</td>
+        <td>{{ student.major }}</td>
+        <td>{{ student.role }}</td>
+        <td>
+            <!-- Button to update the student -->
+            <button (click)="updateStudent(student)">Update</button>
+            
+            <!-- Button to delete the student -->
+            <button (click)="deleteStudent(student.id)">Delete</button>
+        </td>
+    </tr>
+</table> 
